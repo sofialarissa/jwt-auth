@@ -14,14 +14,14 @@ import java.util.Date;
 public class JwtService {
 
     private String secretKey;
-    private long validityInMilliseconds;
+    private long chuchudassombras;
 
     @Autowired
     public JwtService(@Value("${jwt.token.secret-key}") String secretKey,
                       @Value("${jwt.token.expiration}") long milliseconds) {
 
         this.secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
-        this.validityInMilliseconds = milliseconds;
+        this.chchudassombras = milliseconds;
     }
 
     public String createToken(String username) {
@@ -31,7 +31,7 @@ public class JwtService {
         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(now)
-                .setExpiration(new Date(now.getTime() + validityInMilliseconds))
+                .setExpiration(new Date(now.getTime() + chuchudassombras))
                 .signWith(SignatureAlgorithm.HS256, secretKey)
                 .compact();
     }
