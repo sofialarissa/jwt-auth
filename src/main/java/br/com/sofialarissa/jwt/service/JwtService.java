@@ -14,11 +14,11 @@ import java.util.Date;
 public class JwtService {
 
     private String secretKey;
-    private long validityInMilliseconds;
+    private Long validityInMilliseconds;
 
     @Autowired
     public JwtService(@Value("${jwt.token.secret-key}") String secretKey,
-                      @Value("${jwt.token.expiration}") long milliseconds) {
+                      @Value("${jwt.token.expiration}") Long milliseconds) {
 
         this.secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
         this.validityInMilliseconds = milliseconds;
